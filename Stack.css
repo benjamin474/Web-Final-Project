@@ -1,8 +1,6 @@
 body {
     background-image: url(bg_dark.png);
     background-size: 100%;
-    text-align: center;
-    justify-content: center;
     /* align-items: center; */
 }
 
@@ -57,14 +55,11 @@ h1 span {
 }
 
 .button_group>div a img {
-    position:relative;
     width: 80px;
     height: 80px;
     vertical-align: middle;
     margin-right: 30px;
-    left: 25px;
     /* border: 1px solid white; */
-
 }
 
 .button_group>div a {
