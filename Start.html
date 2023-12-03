@@ -26,14 +26,14 @@
             flex-direction: column;
             align-items: center;
         }
-
+/* 
         .button_group #left_side{
             float:left;
         }
 
         .button_group #right_side{
             float:right;
-        }
+        } */
 
         .first_container {
             width: 80%;
@@ -57,7 +57,7 @@
         }
 
         a {
-            font-size: 60px;
+            font-size: 55px;
             color:white;
             text-decoration: none;
             top: 5px;
@@ -67,23 +67,32 @@
         p {
             color:white;
             width: 300px;
-            height: auto;
+            height: 90px;
             display: flex;
             align-items: center;
+            line-height: 90px;
             border: 5px outset gray;
             background-color: green;
             /* text-align: center; */
             align-self: center;
         }
-
+        .button_group > div{
+            
+        }
         p:hover{
             background-color: darkgreen;
             border: 5px inset gray; 
+
             color:black;
             cursor:pointer;
         }
         p:hover a{
             color: yellow;
+            font-size: 52px;
+        }
+        p:hover a img{
+            width:75px;
+            height: 75px;
         }
         @media screen and (max-width: 600px) {
             
@@ -97,26 +106,20 @@
 <body>
     <h1>資料結構小遊戲</h1>
 
-
     <div class="first_container">
-        <div class="button_group" id="left_side">
+        <div class="button_group">
             <p>
                 <a href="Stack.html" target="_blank"><img src='stack_picture.png'> Stack</a>
-            </p><br>
+            </p>
             <p>
                 <a href="Queue.html" target="_blank"><img src='queue_picture.png'> Queue</a>
             </p>
-        </div>
-        <div>
-            
-        </div>
-        <div class="button_group" id="right_side">
             <p>
                 <a href="Array.html" target="_blank"><img src='array_picture.png'> Array</a>
-            </p><br>
+            </p>
             <p>
                 <a href="AboutUs.html" target="_blank"><img src='information.png'>About us</a>
-            </p><br>
+            </p>
             <p>
                 <a href="Source.html" target="_blank"><img src="source_picture.png"> Sources</a>
             </p>
