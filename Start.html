@@ -1,20 +1,130 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <style>
-            h1{
-                font-family:"微軟正黑體";
-                font-size: 200%;
-                text-align: center;
-                color: navy;
-            }
-        </style>
-        <script>
 
-        </script>
-    </head>
-    <body>
-        <h1>資料結構小遊戲</h1>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <style>
+        h1 {
+            font-family: "微軟正黑體", "Helvetica";
+            font-size: 80px;
+            text-align: center;
+            color: white;
+            background-color: black;
+        }
+
+        body {
+            background-image: url(bg_dark.png);
+            background-size: 100%;
+            text-align: center;
+            display: block;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button_group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .button_group #left_side{
+            float:left;
+        }
+
+        .button_group #right_side{
+            float:right;
+        }
+
+        .first_container {
+            width: 80%;
+            justify-content: space-between;
+            height: 50vh;
+            margin: 0 auto;
+            /*border: 1px solid black; */
+        }
+
+
+        .set {
+            text-align: center;
+            text-decoration: none;
+        }
+
+        img {
+            width: 80px;
+            height: 80px;
+            /* border: 1px solid white; */
+            
+        }
+
+        a {
+            font-size: 60px;
+            color:white;
+            text-decoration: none;
+            top: 5px;
+            /* border:1px solid black; */
+        }
+
+        p {
+            color:white;
+            width: 300px;
+            height: auto;
+            display: flex;
+            align-items: center;
+            border: 5px outset gray;
+            background-color: green;
+            /* text-align: center; */
+            align-self: center;
+        }
+
+        p:hover{
+            background-color: darkgreen;
+            border: 5px inset gray; 
+            color:black;
+            cursor:pointer;
+        }
+        p:hover a{
+            color: yellow;
+        }
+        @media screen and (max-width: 600px) {
+            
+        }
+    </style>
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <h1>資料結構小遊戲</h1>
+
+
+    <div class="first_container">
+        <div class="button_group" id="left_side">
+            <p>
+                <a href="Stack.html" target="_blank"><img src='stack_picture.png'> Stack</a>
+            </p><br>
+            <p>
+                <a href="Queue.html" target="_blank"><img src='queue_picture.png'> Queue</a>
+            </p>
+        </div>
+        <div>
+            
+        </div>
+        <div class="button_group" id="right_side">
+            <p>
+                <a href="Array.html" target="_blank"><img src='array_picture.png'> Array</a>
+            </p><br>
+            <p>
+                <a href="AboutUs.html" target="_blank"><img src='information.png'>About us</a>
+            </p><br>
+            <p>
+                <a href="Source.html" target="_blank"><img src="source_picture.png"> Sources</a>
+            </p>
+        </div>
+        <div class="set">
+            <!-- <a href="Array.html" target="_blank"><img src="small_blue_button.png">Array</a> -->
+        </div>
+    </div>
+</body>
+
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        .chart-container {
+            position: relative;
+            /* 讓子元素可以相對於此容器定位 */
+            width: 600px;
+            /* 或根據您的需求調整 */
+            height: 300px;
+            /* 或根據您的需求調整 */
+        }
+
+        .chart-image {
+            width: 100%;
+            /* 讓圖片填滿容器 */
+            height: 100%;
+            object-fit: cover;
+            /* 確保圖片不失真 */
+        }
+
+        .centered-text {
+            position: absolute;
+            /* 絕對定位相對於父容器 */
+            top: 50%;
+            /* 垂直居中 */
+            left: 50%;
+            /* 水平居中 */
+            transform: translate(-50%, -50%);
+            /* 精確定位文字 */
+            color: white;
+            /* 文字顏色 */
+            font-size: 24px;
+            /* 文字大小 */
+            /* 根據需要添加更多樣式 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chart-container">
+        <img src="blue_button.png" alt="Bar Chart" class="chart-image">
+        <div class="centered-text">資料結構小遊戲</div>
+    </div>
+
+</body>
+
+</html>
