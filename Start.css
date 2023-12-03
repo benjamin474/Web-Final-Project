@@ -1,0 +1,149 @@
+body {
+    background-image: url(bg_dark.png);
+    background-size: 100%;
+    text-align: center;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+h1 {
+    font-size: 80px;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    /* opacity: 0; */
+    /* animation: expandAndFadeIn 2s ease forwards; */
+    overflow:hidden;
+    position: relative;
+    height: 120px;
+}
+
+h1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 0;
+    background-color: rgb(34, 33, 33);
+    animation: expandBar 1s forwards;
+}
+
+h1 span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    color: white; /* 或任何您想要的顏色 */
+    animation: fadeInText 2.5s forwards;
+    animation-delay: 0.5s; /* 延遲文字出現，直到黑條展開完畢 */
+}
+
+@keyframes expandBar {
+    to {
+        width: 100%; /* 完全展開 */
+        left: 0;
+    }
+}
+
+@keyframes fadeInText {
+    to {
+        opacity: 1;
+    }
+}
+
+.first_container {
+    width: 80%;
+    justify-content: space-between;
+    height: 50vh;
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+    /*border: 1px solid black; */
+}
+
+.first_container::before{
+    
+    
+    animation: expandBar 1s forwards;
+}
+
+.button_group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+/* 
+.button_group #left_side{
+    float:left;
+}
+
+.button_group #right_side{
+    float:right;
+} */
+
+
+
+.set {
+    text-align: center;
+    text-decoration: none;
+}
+
+.button_group>div a img {
+    width: 80px;
+    height: 80px;
+    vertical-align: middle;
+    margin-right: 30px;
+    /* border: 1px solid white; */
+
+}
+
+.button_group>div a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55px;
+    color: white;
+    text-decoration: none;
+    top: 5px;
+    /* border:1px solid black; */
+}
+
+.button_group>div {
+    color: white;
+    width: 320px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    line-height: 90px;
+    border: 5px outset gray;
+    background-color: green;
+    /* text-align: center; */
+    align-self: center;
+}
+
+
+
+.button_group>div:hover {
+    background-color: darkgreen;
+    border: 5px inset gray;
+
+    color: black;
+    cursor: pointer;
+}
+
+.button_group>div:hover a {
+    color: yellow;
+    font-size: 52px;
+}
+
+.button_group>div:hover a img {
+    width: 75px;
+    height: 75px;
+}
+
