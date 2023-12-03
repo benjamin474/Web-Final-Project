@@ -26,7 +26,7 @@ h1::before {
     height: 100%;
     width: 0;
     background-color: rgb(34, 33, 33);
-    animation: expandBar 1s forwards;
+    /* animation: expandBar 1s forwards; */
 }
 
 h1 span {
@@ -34,11 +34,15 @@ h1 span {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0;
+
+
+    opacity: 1;
+
+
     color: white;
     /* 或任何您想要的顏色 */
-    animation: fadeInText 1.5s forwards;
-    animation-delay: 1s;
+    /* animation: fadeInText 1.5s forwards; */
+    /* animation-delay: 1s; */
     /* 延遲文字出現，直到黑條展開完畢 */
 }
 
@@ -46,31 +50,11 @@ h1 span {
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 .set {
     text-align: center;
     text-decoration: none;
-}
-
-.button_group>div a img {
-    width: 80px;
-    height: 80px;
-    vertical-align: middle;
-    margin-right: 30px;
-    /* border: 1px solid white; */
-}
-
-.button_group>div a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 55px;
-    color: white;
-    text-decoration: none;
-    top: 5px;
-    /* border:1px solid black; */
 }
 
 .button_group>div {
@@ -84,6 +68,25 @@ h1 span {
     background-color: green;
     /* text-align: center; */
     align-self: center;
+}
+
+.button_group>div a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55px;
+    color: white;
+    text-decoration: none;
+    top: 5px;
+    /* border:1px solid black; */
+}
+
+.button_group>div a img {
+    width: 80px;
+    height: 80px;
+    vertical-align: middle;
+    margin-right: 30px;
+    /* border: 1px solid white; */
 }
 
 .button_group>div:hover {
@@ -108,18 +111,35 @@ h1 span {
 /* 其他樣式保持不變 */
 .button_group>div {
     /* 其他樣式保持不變 */
-    opacity: 0;
+
+    opacity: 1;
+
     /* 初始狀態設為不可見 */
     animation: fadeInText 1s forwards;
 }
 
 .button_group>div a {
-    opacity: 0;
+
+    opacity: 1;
+
+    text-align: center;
     animation: fadeInText 1s forwards;
 }
 
+.board{
+    position:absolute;
+    height: 600px;
+    width: 60%;
+    left: 370px;
+    background-color: gray;
+    border: 5px groove green;
+    border-radius: 25px;
+}
+
+
+
 /* 針對每個按鈕添加不同的動畫延遲 */
-.button_group>div:nth-child(1) {
+/* .button_group>div:nth-child(1) {
     animation-delay: 1.5s;
 }
 
@@ -137,10 +157,10 @@ h1 span {
 
 .button_group>div:nth-child(9) {
     animation-delay: 2.5s;
-}
+} */
 
 
-@keyframes expandBar {
+/* @keyframes expandBar {
     to {
         width: 100%;
         left: 0;
@@ -151,4 +171,4 @@ h1 span {
     to {
         opacity: 1;
     }
-}
+} */
