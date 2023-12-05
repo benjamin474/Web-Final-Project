@@ -125,23 +125,23 @@ h1 span {
 
 /* 針對每個按鈕添加不同的動畫延遲 */
 .button_group>div:nth-child(1) {
-    animation-delay: 1.5s;
+    animation-delay: 0.1s;
 }
 
 .button_group>div:nth-child(3) {
-    animation-delay: 1.75s;
+    animation-delay: 0.2s;
 }
 
 .button_group>div:nth-child(5) {
-    animation-delay: 2s;
+    animation-delay: 0.3s;
 }
 
 .button_group>div:nth-child(7) {
-    animation-delay: 2.25s;
+    animation-delay: 0.4s;
 }
 
 .button_group>div:nth-child(9) {
-    animation-delay: 2.5s;
+    animation-delay: 0.5s;
 }
 
 
