@@ -9,11 +9,13 @@
 
 <body>
     <h1><span>Stack(堆疊)</span></h1>
-
+    <div class="go_home">
+        <a href="Start.html"><img src='home_rounded.png'></a>
+    </div>
     <div class="button_group" style="float: left;">
-        <div id="assign" onclick="assign()">Assign</div><br>
-        <div id="top">Top</div><br>
-        <div id="push">Push</div><br>
+        <div id="assign" class="button"  onclick="assign()">Assign</div><br>
+        <div id="top" class="button" >Top</div><br>
+        <div id="push" class="button" >Push</div><br>
     </div>
 
     <div class="board" id="board">
@@ -23,9 +25,9 @@
     <div id="input"></div>
 
     <div class="button_group" style="float: right;">
-        <div id="pop">Pop</div><br>
-        <div id="clear">Clear</div><br>
-        <div id="example">Example</div>
+        <div id="pop" class="button" >Pop</div><br>
+        <div id="clear" class="button" onclick="clearAll()">Clear</div><br>
+        <div id="example" class="button" >Example</div>
     </div>
     
 </body>

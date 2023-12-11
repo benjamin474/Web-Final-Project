@@ -4,35 +4,31 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="Container.css">
-    <script>
-        
-    </script>
+    <script src="Stack.js"></script> 
 </head>
 
 <body>
     <h1><span>Queue(佇列)</span></h1>
-
+    <div class="go_home">
+        <a href="Start.html"><img src='home_rounded.png'></a>
+    </div>
     <div class="button_group" style="float: left;">
-        <div>
-            指定長度
-        </div><br>
-        <div>
-            <a href="Queue.html" target="_blank">Front</a>
-        </div><br>
-        <div>
-            <a href="Array.html" target="_blank">Back</a>
-        </div><br>
+        <div id="assign" class="button" onclick="assign()">Assign</div><br>
+        <div id="front" class="button">Front</div><br>
+        <div id="back" class="button">Back</div><br>
     </div>
-    <div class="board">
+
+    <div class="board" id="board">
 
     </div>
+
+    <div id="input"></div>
+
     <div class="button_group" style="float: right;">
-        <div>
-            <a href="AboutUs.html" target="_blank">pop</a>
-        </div><br>
-        <div>
-            <a href="Source.html" target="_blank">clear</a>
-        </div>
+        <div id="enqueue" class="button">Enqueue</div><br>
+        <div id="dequeue" class="button">Dequeue</div><br>
+        <div id="clear" class="button">Clear</div><br>
+        <div id="example" class="button"><a href='https://www.youtube.com/watch?v=BbeeuzU5Qc8' target="_blank" style="text-decoration: none; color:white;">Example</a></div>
     </div>
     
 </body>

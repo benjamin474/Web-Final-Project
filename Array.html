@@ -1,112 +1,35 @@
 <!DOCTYPE html>
 <html>
-<!-- Array -->
+
 <head>
     <meta charset="utf-8">
-    <style>
-        h1 {
-            font-family: "微軟正黑體", "Helvetica";
-            font-size: 80px;
-            text-align: center;
-            color: white;
-            background-color: black;
-        }
-
-        body {
-            background-image: url(bg_dark.png);
-            background-size: 100%;
-            text-align: center;
-            display: block;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .button_group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .button_bgp {
-            background-color: transparent;
-            color: white;
-            width: 300px;
-            height: 116px;
-            font-size: 50px;
-            /* border: 1px solid black; */
-            text-align: center;
-        }
-
-        .first_container {
-            width: 80%;
-            justify-content: space-between;
-            height: 50vh;
-            margin: 0 auto;
-            /*border: 1px solid black; */
-        }
-
-
-        .set {
-            text-align: center;
-            text-decoration: none;
-        }
-
-        img {
-            width: 80px;
-            height: 80px;
-            /* border: 1px solid white; */
-        }
-
-        a {
-            font-size: 60px;
-            text-decoration: none;
-            color: white;
-            top: 5px;
-            /* border:1px solid black; */
-        }
-
-        p {
-            width: 300px;
-            height: auto;
-            display: flex;
-            align-items: center;
-            background-color: green;
-
-        }
-    </style>
-    <script>
-
-    </script>
+    <link rel="stylesheet" type="text/css" href="Container.css">
+    <script src="Stack.js"></script> 
 </head>
 
 <body>
-    <h1>資料結構小遊戲</h1>
-
-
-    <div class="first_container">
-        <div class="button_group" style="float: left;">
-            <p>
-                <a href="Stack.html" target="_blank"><img src='stack_picture.png'> Stack</a>
-            </p><br>
-            <p>
-                <a href="Queue.html" target="_blank"><img src='queue_picture.png'> Queue</a>
-            </p>
-        </div>
-        <div class="button_group" style="float: right;">
-            <p>
-                <a href="Array.html" target="_blank"><img src='array_picture.png'> Array</a>
-            </p><br>
-            <p>
-                <a href="AboutUs.html" target="_blank"><img src='information.png'>About us</a>
-            </p><br>
-            <p>
-                <a href="Source.html" target="_blank"><img src="source_picture.png"> Sources</a>
-            </p>
-        </div>
-        <div class="set">
-            <!-- <a href="Array.html" target="_blank"><img src="small_blue_button.png">Array</a> -->
-        </div>
+    <h1><span>Array(陣列)</span></h1>
+    <div class="go_home">
+        <a href="Start.html"><img src='home_rounded.png'></a>
     </div>
+    <div class="button_group" style="float: left;">
+        <div id="assign" onclick="assign()" class="button" >Assign</div><br>
+        <div id="top" class="button" >Top</div><br>
+        <div id="push" class="button" >Push</div><br>
+    </div>
+
+    <div class="board" id="board">
+
+    </div>
+
+    <div id="input"></div>
+
+    <div class="button_group" style="float: right;">
+        <div id="pop" class="button" >Pop</div><br>
+        <div id="clear" class="button" >Clear</div><br>
+        <div id="example" class="button" ><a href='https://www.youtube.com/watch?v=BbeeuzU5Qc8' target="_blank" style="text-decoration: none; color:white;">Example</a></div>
+    </div>
+    
 </body>
 
 </html>

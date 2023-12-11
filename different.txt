@@ -1,0 +1,272 @@
+用繁體中文解釋 為何第一段code的每個按鈕一次跑出全部
+不像第二段code可以逐個出現
+
+................................div in a
+...html
+ <div class="button_group">
+        <a href="Stack.html">
+            <div>
+                <img src='stack_picture.png'> Stack
+            </div>
+        </a><br>
+
+        <a href="Queue.html" target="_blank">
+            <div>
+                <img src='queue_picture.png'> Queue
+            </div>
+        </a><br>
+
+        <a href="Array.html" target="_blank"><div>
+            <img src='array_picture.png'> Array
+        </div></a><br>
+
+        <a href="AboutUs.html" target="_blank"><div>
+            <img src='information.png'>About us
+        </div></a><br>
+        
+        <a href="Source.html" target="_blank"><div>
+            <img src="source_picture.png"> Sources
+        </div></a>
+    </div>
+...css
+
+
+.button_group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.set {
+    text-align: center;
+    text-decoration: none;
+}
+
+.button_group>a div img {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    vertical-align: middle;
+    margin-right: 30px;
+    left: 25px;
+    /* border: 1px solid white; */
+
+}
+
+.button_group>a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55px;
+    color: white;
+    text-decoration: none;
+    top: 5px;
+    /* border:1px solid black; */
+}
+
+.button_group>a div {
+    color: white;
+    width: 320px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    line-height: 90px;
+    border: 5px outset gray;
+    background-color: green;
+    /* text-align: center; */
+    align-self: center;
+}
+
+.button_group>a div:hover {
+    background-color: darkgreen;
+    border: 5px inset gray;
+
+    color: black;
+    cursor: pointer;
+}
+
+.button_group>a div:hover {
+    color: yellow;
+    font-size: 52px;
+}
+
+.button_group>a div:hover img {
+    width: 75px;
+    height: 75px;
+}
+
+
+/* 其他樣式保持不變 */
+.button_group>a div {
+    /* 其他樣式保持不變 */
+    opacity: 0;
+    /* 初始狀態設為不可見 */
+    animation: fadeInText 1s forwards;
+}
+/* 
+.button_group>a div {
+    opacity: 0;
+    animation: fadeInText 1s forwards;
+} */
+
+/* 針對每個按鈕添加不同的動畫延遲 */
+
+.button_group>a:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.button_group>a:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.button_group>a:nth-child(5) {
+    animation-delay: 0.3s;
+}
+
+.button_group>a:nth-child(7) {
+    animation-delay: 0.4s;
+}
+
+.button_group>a:nth-child(9) {
+    animation-delay: 0.5s;
+}
+
+
+@keyframes expandBar {
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+@keyframes fadeInText {
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+
+................................a in div
+
+...html
+ <div class="button_group">
+        <div>
+            <a href="Stack.html" target="_blank"><img src='stack_picture.png'> Stack</a>
+        </div><br>
+        <div>
+            <a href="Queue.html" target="_blank"><img src='queue_picture.png'> Queue</a>
+        </div><br>
+        <div>
+            <a href="Array.html" target="_blank"><img src='array_picture.png'> Array</a>
+        </div><br>
+        <div>
+            <a href="AboutUs.html" target="_blank"><img src='information.png'>About us</a>
+        </div><br>
+        <div>
+            <a href="Source.html" target="_blank"><img src="source_picture.png"> Sources</a>
+        </div>
+    </div>
+
+...css
+.button_group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.set {
+    text-align: center;
+    text-decoration: none;
+}
+
+.button_group>div a img {
+    position:relative;
+    width: 80px;
+    height: 80px;
+    vertical-align: middle;
+    margin-right: 30px;
+    left: 25px;
+    /* border: 1px solid white; */
+
+}
+
+.button_group>div a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55px;
+    color: white;
+    text-decoration: none;
+    top: 5px;
+    /* border:1px solid black; */
+}
+
+.button_group>div {
+    color: white;
+    width: 320px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    line-height: 90px;
+    border: 5px outset gray;
+    background-color: green;
+    /* text-align: center; */
+    align-self: center;
+}
+
+.button_group>div:hover {
+    background-color: darkgreen;
+    border: 5px inset gray;
+
+    color: black;
+    cursor: pointer;
+}
+
+.button_group>div:hover a {
+    color: yellow;
+    font-size: 52px;
+}
+
+.button_group>div:hover a img {
+    width: 75px;
+    height: 75px;
+}
+
+
+/* 其他樣式保持不變 */
+.button_group>div {
+    /* 其他樣式保持不變 */
+    opacity: 0;
+    /* 初始狀態設為不可見 */
+    animation: fadeInText 1s forwards;
+}
+
+.button_group>div a {
+    opacity: 0;
+    animation: fadeInText 1s forwards;
+}
+
+/* 針對每個按鈕添加不同的動畫延遲 */
+.button_group>div:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.button_group>div:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.button_group>div:nth-child(5) {
+    animation-delay: 0.3s;
+}
+
+.button_group>div:nth-child(7) {
+    animation-delay: 0.4s;
+}
+
+.button_group>div:nth-child(9) {
+    animation-delay: 0.5s;
+}

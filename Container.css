@@ -11,7 +11,7 @@ h1 {
     white-space: nowrap;
     width: 100%;
     /* opacity: 0; */
-    /* animation: expandAndFadeIn 2s ease forwards; */
+    animation: fadeIntext 2s forwards;
     overflow: hidden;
     position: relative;
     height: 120px;
@@ -25,7 +25,7 @@ h1::before {
     height: 100%;
     width: 0;
     background-color: rgb(34, 33, 33);
-    /* animation: expandBar 1s forwards; */
+    animation: expandBar 1s forwards;
 }
 
 h1 span {
@@ -33,20 +33,29 @@ h1 span {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-
-    opacity: 1;
-
+    opacity: 0;
 
     color: white;
     /* 或任何您想要的顏色 */
-    /* animation: fadeInText 1.5s forwards; */
-    /* animation-delay: 1s; */
+    animation: fadeInText 1.5s forwards;
+    animation-delay: 1s;
     /* 延遲文字出現，直到黑條展開完畢 */
 }
 
+.go_home {
+    position: absolute;
+    top: 65px;
+    left: 50px;
+    /* background-color: white; */
+}
+
+.go_home>a img {
+    width: 100px;
+    height: 100px;
+}
+
 .button_group {
-    width:15%;
+    width: 15%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,7 +66,7 @@ h1 span {
     text-decoration: none;
 }
 
-.button_group>div {
+.button {
     color: white;
     font-size: 55px;
     width: 100%;
@@ -73,7 +82,7 @@ h1 span {
     top: 40px;
 }
 
-.button_group>div:hover {
+.button:hover {
     background-color: darkgreen;
     border: 5px inset gray;
     font-size: 52px;
@@ -81,24 +90,20 @@ h1 span {
     cursor: pointer;
 }
 
-.button_group>div:hover a {
-    color: yellow;
-    font-size: 52px;
-}
 
 
 /* 其他樣式保持不變 */
-.button_group>div {
-    /* 其他樣式保持不變 */
+/* .button { */
+/* 其他樣式保持不變 */
 
-    opacity: 1;
+/* opacity: 1; */
 
-    /* 初始狀態設為不可見 */
-    animation: fadeInText 1s forwards;
-}
+/* 初始狀態設為不可見 */
+/* animation: fadeInText 1s forwards; */
+/* } */
 
-.board{
-    position:absolute;
+.board {
+    position: absolute;
     height: 60%;
     width: 60%;
     left: 20%;
@@ -107,45 +112,22 @@ h1 span {
     border-radius: 25px;
 }
 
-.input{
+.input {
     position: absolute;
     top: 95%;
     left: 40%;
     height: 30px;
     width: 20%;
-    color:black;
+    color: black;
     text-align: center;
-    background-color: white;
+    /* background-color: white; */
     display: flex;
 }
 
-.blank
 
 
 
-/* 針對每個按鈕添加不同的動畫延遲 */
-/* .button_group>div:nth-child(1) {
-    animation-delay: 1.5s;
-}
-
-.button_group>div:nth-child(3) {
-    animation-delay: 1.75s;
-}
-
-.button_group>div:nth-child(5) {
-    animation-delay: 2s;
-}
-
-.button_group>div:nth-child(7) {
-    animation-delay: 2.25s;
-}
-
-.button_group>div:nth-child(9) {
-    animation-delay: 2.5s;
-} */
-
-
-/* @keyframes expandBar {
+@keyframes expandBar {
     to {
         width: 100%;
         left: 0;
@@ -156,4 +138,4 @@ h1 span {
     to {
         opacity: 1;
     }
-} */
+}
