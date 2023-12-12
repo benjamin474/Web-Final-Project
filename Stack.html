@@ -37,10 +37,12 @@
             $("#assign").click(assign);
             $("#clear").click(clearAll);
             $("#push").click(push)
+            $("#top").click(getTop)
+            $("#pop").click(pop)
         })
 
         function push() {
-            if(topIndex>=stackSize){
+            if (!(topIndex < stackSize - 1)) {
                 alert('This stack is full!');
                 return;
             }
@@ -53,32 +55,40 @@
             now.fadeIn(5)
         }
 
-        function occur(ele){
-            
+        function occur(ele) {
+
         }
 
         function pop() {
-            let summonBoard = document.getElementById('board');
-
+            const topEle = $(`#ele${topIndex}`).children()
+            topEle.text("　")
+            topEle.removeClass("inserted")
+            topIndex -= 1;
         }
+
+        function getTop() {
+            const topEle = $(`#ele${topIndex}`).children()
+            occur(topEle)
+        }
+
         function buildStack(val) {
             let summonBoard = $('#board')
             clearAll()
-            stackSize=val;
+            stackSize = val;
             topIndex = -1;
 
             let stackContainer = $(document.createElement('table'))
-            for(let i=stackSize-1;i>=0;i--){
-                const tr=$(document.createElement("tr"))
-                const td=$(document.createElement("td"))
-                const div=$(document.createElement("div"))
+            for (let i = stackSize - 1; i >= 0; i--) {
+                const tr = $(document.createElement("tr"))
+                const td = $(document.createElement("td"))
+                const div = $(document.createElement("div"))
                 td.text("　")
-                tr.attr("id",`ele${i}`);
+                tr.attr("id", `ele${i}`);
                 tr.append(td);
                 stackContainer.append(tr);
             }
             summonBoard.append(stackContainer)
-            
+
             // let summonBoard = document.getElementById('board');
             // let stackContainer = document.createElement('table');
             // let getVal = document.getElementById('inputBoard');
