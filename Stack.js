@@ -16,8 +16,6 @@ let boardExist = false;
 
 function push() {
     
-
-    
 }
 
 function pop() {

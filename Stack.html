@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="Container.css">
-    <script src="Stack.js"></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="Stack.js"></script>
     <script>
     </script>
 </head>
@@ -16,23 +16,139 @@
         <a href="Start.html"><img src='icon/home_rounded.png'></a>
     </div>
     <div class="button_group" style="float: left;">
-        <div id="assign" class="button"  onclick="assign()">Assign</div><br>
-        <div id="top" class="button" >Top</div><br>
-        <div id="push" class="button" >Push</div><br>
+        <div id="assign" class="button">Assign</div><br>
+        <div id="top" class="button">Top</div><br>
+        <div id="push" class="button">Push</div><br>
     </div>
 
-    <div class="board" id="board">
-
-    </div>
+    <div class="board" id="board"></div>
 
     <div id="input"></div>
 
     <div class="button_group" style="float: right;">
-        <div id="pop" class="button" >Pop</div><br>
-        <div id="clear" class="button" onclick="clearAll()">Clear</div><br>
-        <div id="example" class="button" >Example</div>
+        <div id="pop" class="button">Pop</div><br>
+        <div id="clear" class="button">Clear</div><br>
+        <div id="example" class="button">Example</div>
     </div>
-    
+    <script>
+        let stackSize = -1;
+        let topIndex = -1;
+        $(document).ready(() => {
+            $("#assign").click(assign);
+            $("#clear").click(clearAll);
+            $("#push").click(push)
+        })
+
+        function push() {
+            if(topIndex>=stackSize){
+                alert('This stack is full!');
+                return;
+            }
+
+            topIndex++;
+            let now = $(`#ele${topIndex}`).children();
+            now.addClass("inserted")
+            // now.removeClass("inserted")
+            now.text("1");
+            now.fadeIn(5)
+        }
+
+        function occur(ele){
+            
+        }
+
+        function pop() {
+            let summonBoard = document.getElementById('board');
+
+        }
+        function buildStack(val) {
+            let summonBoard = $('#board')
+            clearAll()
+            stackSize=val;
+            topIndex = -1;
+
+            let stackContainer = $(document.createElement('table'))
+            for(let i=stackSize-1;i>=0;i--){
+                const tr=$(document.createElement("tr"))
+                const td=$(document.createElement("td"))
+                const div=$(document.createElement("div"))
+                td.text("　")
+                tr.attr("id",`ele${i}`);
+                tr.append(td);
+                stackContainer.append(tr);
+            }
+            summonBoard.append(stackContainer)
+            
+            // let summonBoard = document.getElementById('board');
+            // let stackContainer = document.createElement('table');
+            // let getVal = document.getElementById('inputBoard');
+            // Length = parseInt(getVal.value);
+            // getVal.innerHTML = '';
+
+
+            // let table = document.createElement('table');
+
+
+        }
+
+        function clearAll() {
+            $('#board').empty()
+            removeInput();
+
+        }
+
+
+        function removeInput() {
+
+            console.log('removeInput function is activated.');
+            boardExist = false;
+            $("#input").empty();
+        }
+
+        function assign() { //出現輸入列 然後交給build
+            if (!boardExist) {
+                boardExist = true;
+                let input = $(document.createElement("input"));
+                let container = $("#input")
+                let submitButton = $(document.createElement('button'))
+                let cancelButton = $(document.createElement('button'))
+
+                container.attr('background-color', 'white');
+
+                container.addClass("input")
+                input.attr("type", "Number")
+                input.attr("id", "stackSize")
+                input.attr("placeholder", "請輸入1~10之間的數字")
+
+                submitButton.text("submit")
+                submitButton.attr("id", "submitBtn")
+                cancelButton.text("cancel")
+                cancelButton.attr("id", "cancelBtn")
+
+                container.append([cancelButton, input, submitButton]);
+
+                $("#cancelBtn").click(() => {
+                    removeInput()
+                })
+
+                $("#submitBtn").click(() => {
+                    const inp = $("#stackSize").val();
+                    if (inp.length == 0) {
+                        alert("Please input stack size")
+                        return;
+                    }
+                    const value = Number.parseInt(inp);
+                    if (!(value >= 1 && value <= 10)) {
+                        alert("Stack size invalid")
+                        return;
+                    }
+                    buildStack(value)
+                })
+            }
+
+
+        }
+    </script>
 </body>
 
 </html>

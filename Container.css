@@ -42,6 +42,21 @@ h1 span {
     /* 延遲文字出現，直到黑條展開完畢 */
 }
 
+table tr td{
+    border-collapse: collapse;
+    border: 5px groove white;
+    border-radius: 25px;
+    
+    z-index: 4;
+}
+table{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom:0;
+}
+
+
 .go_home {
     position: absolute;
     top: 65px;
@@ -109,6 +124,8 @@ h1 span {
     left: 20%;
     background-color: gray;
     border: 5px groove green;
+    /* display: flex; */
+    /* align-items: center; */
     border-radius: 25px;
 }
 
@@ -138,4 +155,8 @@ h1 span {
     to {
         opacity: 1;
     }
+}
+
+.inserted{
+    background-color: yellow;
 }
