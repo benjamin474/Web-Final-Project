@@ -1,13 +1,14 @@
+
 import { Length, boardExist } from "./Stack";
 
-export function clearAll() {
+function clearAll() {
 
     removeInput();
 
 }
 
 
-export function removeInput() {
+function removeInput() {
 
     console.log('removeInput function is activated.');
     let board = document.getElementById('input');
@@ -17,8 +18,8 @@ export function removeInput() {
 
 }
 
-export function assign() { //出現輸入列 然後交給真正的build
-
+function assign() { //出現輸入列 然後交給build
+    console.log('assign()');
     if (!boardExist) {
         boardExist = true;
         let inputBoard = document.createElement('input');
