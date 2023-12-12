@@ -14,11 +14,10 @@ let boardExist = false;
 //     let summonBoard = document.getElementById('board');
 // }
 
-
 function push() {
+    
 
-
-
+    
 }
 
 function pop() {
@@ -65,7 +64,8 @@ function assign() { //出現輸入列 然後交給build
         let inputBoard = document.createElement('input');
         let inputBoardContainer = document.getElementById('input');
         let submit = document.createElement('button');
-        let cancel = document.createElement('button')
+        let cancel = document.createElement('button');
+        
 
         inputBoardContainer.setAttribute('background-color', 'white');
 
@@ -79,6 +79,7 @@ function assign() { //出現輸入列 然後交給build
 
         cancel.value = 'cancel';
         cancel.addEventListener('click', removeInput, false);
+
 
         inputBoardContainer.appendChild(inputBoard);
         inputBoardContainer.appendChild(submit);
