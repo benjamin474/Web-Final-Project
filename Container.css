@@ -43,7 +43,7 @@ h1 span {
 }
 
 table tr td{
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
     border: 5px groove white;
     border-radius: 25px;
     

@@ -4,13 +4,14 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="Container.css">
-    <script src="Stack.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="Stack.js"></script>
 </head>
 
 <body>
     <h1><span>Queue(佇列)</span></h1>
     <div class="go_home">
-        <a href="Start.html"><img src='home_rounded.png'></a>
+        <a href="Start.html"><img src='icon/home_rounded.png'></a>
     </div>
     <div class="button_group" style="float: left;">
         <div id="assign" class="button" onclick="assign()">Assign</div><br>
@@ -28,9 +29,97 @@
         <div id="enqueue" class="button">Enqueue</div><br>
         <div id="dequeue" class="button">Dequeue</div><br>
         <div id="clear" class="button">Clear</div><br>
-        <div id="example" class="button"><a href='https://www.youtube.com/watch?v=BbeeuzU5Qc8' target="_blank" style="text-decoration: none; color:white;">Example</a></div>
+        <div id="example" class="button">Example</div>
     </div>
-    
+
+    <script>
+        let queueSize = -1;
+        let frontIndex = -1, backIndex = -1;
+        $(document).ready(() => {
+            $('#assign').click(assign);
+            $('#front').click(getFront);
+            $('#back').click(getBack);
+            $('#enqueue').click();
+            $('#dequeue').click();
+            $('#clearAll').click();
+
+
+        })
+
+        function assign() { //出現輸入列 然後交給build
+            if (!boardExist) {
+                boardExist = true;
+                let input = $(document.createElement("input"));
+                let container = $("#input")
+                let submitButton = $(document.createElement('button'))
+                let cancelButton = $(document.createElement('button'))
+
+                container.attr('background-color', 'white');
+
+                container.addClass("input")
+                input.attr("type", "Number")
+                input.attr("id", "stackSize")
+                input.attr("placeholder", "請輸入1~10之間的數字")
+
+                submitButton.text("submit")
+                submitButton.attr("id", "submitBtn")
+                cancelButton.text("cancel")
+                cancelButton.attr("id", "cancelBtn")
+
+                container.append([cancelButton, input, submitButton]);
+
+                $("#cancelBtn").click(() => {
+                    removeInput()
+                })
+                $("#submitBtn").click(() => {
+                    const inp = $("#stackSize").val();
+                    if (inp.length == 0) {
+                        alert("Please input stack size")
+                        return;
+                    }
+                    const value = Number.parseInt(inp);
+                    if (!(value >= 1 && value <= 10)) {
+                        alert("Stack size invalid")
+                        return;
+                    }
+                    buildStack(value)
+                })
+            }
+        }
+
+        function buildQueue(val) {
+            let summonBoard = $("#board");
+            clearAll();
+            queueSize = val;
+            
+
+            let queueContainer = $(document.createElement('table'));
+            let tr = $(document.createElement('tr'))
+            queueContainer.append(tr)
+            queueContainer.append();
+            for(let i=queueSize-1;i>=0;i--){
+                const td = $(document.createElement('td'))
+                td.text('　')
+                td.attr("id",`ele${i}`)
+                tr.append(td)
+            }
+            summonBoard.append(queueContainer)
+
+        }
+
+        function clearAll() {
+            $("#board").empty();
+            removeInput();
+
+        }
+
+        function removeInput() {
+            console.log('removeInput function is activated.');
+            boardExist = false;
+            $("#input").empty();
+        }
+
+    </script>
 </body>
 
 </html>
