@@ -42,33 +42,69 @@
         })
 
         function push() {
-            if (!(topIndex < stackSize - 1)) {
-                alert('This stack is full!');
-                return;
-            }
 
-            topIndex++;
-            let now = $(`#ele${topIndex}`).children();
-            now.addClass("inserted")
             // now.removeClass("inserted")
-            now.text("1");
-            now.fadeIn(5)
-        }
+            // now.text("1");
 
-        function occur(ele) {
+            if (!boardExist) {
+                inputSummon('push');
+
+                $("#cancelBtn").click(() => {
+                    removeInput()
+                })
+
+                $("#submitBtn").click(() => {
+                    if (!(topIndex < stackSize - 1)) {
+                        alert('This stack is full!');
+                        return;
+                    }
+                    topIndex++;
+                    let now = $(`#ele${topIndex}`).children();
+                    const inp = $("#stackSize").val();
+                    const value = Number.parseInt(inp);
+                    now.text(value);
+                    now.removeClass("removed")
+                    now.addClass("inserted")
+                    // removeInput();
+                })
+
+            }
+            else {
+                alert('請先取消或輸入完當前數據!')
+            }
 
         }
 
         function pop() {
+            if (topIndex < 0) {
+                alert('This stack is empty!!');
+                return;
+            }
             const topEle = $(`#ele${topIndex}`).children()
             topEle.text("　")
+            topEle.removeClass('getTop')
             topEle.removeClass("inserted")
+            topEle.addClass('removed');
             topIndex -= 1;
         }
 
         function getTop() {
-            const topEle = $(`#ele${topIndex}`).children()
-            occur(topEle)
+            if (topIndex < 0) {
+                alert('This stack is empty!!');
+                return;
+            }
+            const topEle = $(`#ele${topIndex}`).children();
+
+            topEle.removeClass('inserted')
+            topEle.removeClass('white')
+            topEle.addClass("getTop")
+            setTimeout(() => {
+                topEle.removeClass('getTop');
+                topEle.addClass('white')
+            }, 2000);
+
+
+
         }
 
         function buildStack(val) {
@@ -88,17 +124,6 @@
                 stackContainer.append(tr);
             }
             summonBoard.append(stackContainer)
-
-            // let summonBoard = document.getElementById('board');
-            // let stackContainer = document.createElement('table');
-            // let getVal = document.getElementById('inputBoard');
-            // Length = parseInt(getVal.value);
-            // getVal.innerHTML = '';
-
-
-            // let table = document.createElement('table');
-
-
         }
 
         function clearAll() {
@@ -108,33 +133,15 @@
 
 
         function removeInput() {
-
             console.log('removeInput function is activated.');
             boardExist = false;
+
             $("#input").empty();
         }
 
         function assign() { //出現輸入列 然後交給build
             if (!boardExist) {
-                boardExist = true;
-                let input = $(document.createElement("input"));
-                let container = $("#input")
-                let submitButton = $(document.createElement('button'))
-                let cancelButton = $(document.createElement('button'))
-
-                container.attr('background-color', 'white');
-
-                container.addClass("input")
-                input.attr("type", "Number")
-                input.attr("id", "stackSize")
-                input.attr("placeholder", "請輸入1~10之間的數字")
-
-                submitButton.text("submit")
-                submitButton.attr("id", "submitBtn")
-                cancelButton.text("cancel")
-                cancelButton.attr("id", "cancelBtn")
-
-                container.append([input, submitButton, cancelButton]);
+                inputSummon('assign');
 
                 $("#cancelBtn").click(() => {
                     removeInput()
@@ -154,8 +161,37 @@
                     buildStack(value)
                 })
             }
+            else {
+                alert('請先取消或輸入完當前數據!')
+            }
+        }
 
+        function inputSummon(type) {
+            let holder;
+            if (type == 'assign')
+                holder = '請輸入1~10之間的數字'
+            else if (type == 'push')
+                holder = '請輸入任意數字'
 
+            boardExist = true;
+            let input = $(document.createElement("input"));
+            let container = $("#input")
+            let submitButton = $(document.createElement('button'))
+            let cancelButton = $(document.createElement('button'))
+
+            container.attr('background-color', 'white');
+
+            container.addClass("input")
+            input.attr("type", "Number")
+            input.attr("id", "stackSize")
+            input.attr("placeholder", holder)
+
+            submitButton.text("submit")
+            submitButton.attr("id", "submitBtn")
+            cancelButton.text("cancel")
+            cancelButton.attr("id", "cancelBtn")
+
+            container.append([input, submitButton, cancelButton]);
         }
     </script>
 </body>
