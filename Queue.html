@@ -1,125 +1,153 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="Container.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script src="Stack.js"></script>
+	</head>
 
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="Container.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="Stack.js"></script>
-</head>
+	<body>
+		<h1><span>Queue(佇列)</span></h1>
+		<div class="go_home">
+			<a href="Start.html"><img src="icon/home_rounded.png" /></a>
+		</div>
+		<div class="button_group" style="float: left">
+			<div id="assign" class="button" onclick="assign()">Assign</div>
+			<br />
+			<div id="front" class="button">Front</div>
+			<br />
+			<div id="back" class="button">Back</div>
+			<br />
+		</div>
 
-<body>
-    <h1><span>Queue(佇列)</span></h1>
-    <div class="go_home">
-        <a href="Start.html"><img src='icon/home_rounded.png'></a>
-    </div>
-    <div class="button_group" style="float: left;">
-        <div id="assign" class="button" onclick="assign()">Assign</div><br>
-        <div id="front" class="button">Front</div><br>
-        <div id="back" class="button">Back</div><br>
-    </div>
+		<div class="board" id="board"></div>
 
-    <div class="board" id="board">
+		<div id="input"></div>
 
-    </div>
+		<div class="button_group" style="float: right">
+			<div id="enqueue" class="button">Enqueue</div>
+			<br />
+			<div id="dequeue" class="button">Dequeue</div>
+			<br />
+			<div id="clear" class="button">Clear</div>
+			<br />
+			<div id="example" class="button">Example</div>
+		</div>
 
-    <div id="input"></div>
+		<script>
+			let queueSize = -1;
+			let frontIndex = -1,
+				backIndex = -1;
+			$(document).ready(() => {
+				$("#assign").click(assign);
+				// $('#front').click(getFront);
+				// $('#back').click(getBack);
+				$("#enqueue").click(enqueue);
+				$("#dequeue").click(dequeue);
+				$("#clear").click(clearAll);
+			});
 
-    <div class="button_group" style="float: right;">
-        <div id="enqueue" class="button">Enqueue</div><br>
-        <div id="dequeue" class="button">Dequeue</div><br>
-        <div id="clear" class="button">Clear</div><br>
-        <div id="example" class="button">Example</div>
-    </div>
+			function assign() {
+				//出現輸入列 然後交給build
+				if (!boardExist) {
+					boardExist = true;
+					let input = $(document.createElement("input"));
+					let container = $("#input");
+					let submitButton = $(document.createElement("button"));
+					let cancelButton = $(document.createElement("button"));
 
-    <script>
-        let queueSize = -1;
-        let frontIndex = -1, backIndex = -1;
-        $(document).ready(() => {
-            $('#assign').click(assign);
-            $('#front').click(getFront);
-            $('#back').click(getBack);
-            $('#enqueue').click();
-            $('#dequeue').click();
-            $('#clearAll').click();
+					container.attr("background-color", "white");
 
+					container.addClass("input");
+					input.attr("type", "Number");
+					input.attr("id", "stackSize");
+					input.attr("placeholder", "請輸入1~10之間的數字");
 
-        })
+					submitButton.text("submit");
+					submitButton.attr("id", "submitBtn");
+					cancelButton.text("cancel");
+					cancelButton.attr("id", "cancelBtn");
 
-        function assign() { //出現輸入列 然後交給build
-            if (!boardExist) {
-                boardExist = true;
-                let input = $(document.createElement("input"));
-                let container = $("#input")
-                let submitButton = $(document.createElement('button'))
-                let cancelButton = $(document.createElement('button'))
+					container.append([cancelButton, input, submitButton]);
 
-                container.attr('background-color', 'white');
+					$("#cancelBtn").click(() => {
+						removeInput();
+					});
+					$("#submitBtn").click(() => {
+						const inp = $("#stackSize").val();
+						if (inp.length == 0) {
+							alert("Please input stack size");
+							return;
+						}
+						const value = Number.parseInt(inp);
+						if (!(value >= 1 && value <= 10)) {
+							alert("Stack size invalid");
+							return;
+						}
+						buildQueue(value);
+					});
+				}
+			}
 
-                container.addClass("input")
-                input.attr("type", "Number")
-                input.attr("id", "stackSize")
-                input.attr("placeholder", "請輸入1~10之間的數字")
+			function buildQueue(val) {
+				let summonBoard = $("#board");
+				clearAll();
+				queueSize = val;
+				backIndex = 0;
+				frontIndex = 0;
 
-                submitButton.text("submit")
-                submitButton.attr("id", "submitBtn")
-                cancelButton.text("cancel")
-                cancelButton.attr("id", "cancelBtn")
+				let queueContainer = $(document.createElement("table"));
+				let tr = $(document.createElement("tr"));
+				tr.attr("id", "row");
+				queueContainer.append(tr);
+				queueContainer.append();
+				for (let i = queueSize - 1; i >= 0; i--) {
+					const td = $(document.createElement("td"));
+					td.text("　");
+					td.attr("id", `ele${i}`);
+					tr.append(td);
+				}
+				summonBoard.append(queueContainer);
+			}
 
-                container.append([cancelButton, input, submitButton]);
+			function clearAll() {
+				$("#board").empty();
+				removeInput();
+			}
 
-                $("#cancelBtn").click(() => {
-                    removeInput()
-                })
-                $("#submitBtn").click(() => {
-                    const inp = $("#stackSize").val();
-                    if (inp.length == 0) {
-                        alert("Please input stack size")
-                        return;
-                    }
-                    const value = Number.parseInt(inp);
-                    if (!(value >= 1 && value <= 10)) {
-                        alert("Stack size invalid")
-                        return;
-                    }
-                    buildStack(value)
-                })
-            }
-        }
+			function removeInput() {
+				console.log("removeInput function is activated.");
+				boardExist = false;
+				$("#input").empty();
+			}
 
-        function buildQueue(val) {
-            let summonBoard = $("#board");
-            clearAll();
-            queueSize = val;
-            
+			function enqueue() {
+				if (!(backIndex < queueSize)) {
+					alert("Queue is full");
+					return;
+				}
+				let now = $(`#ele${backIndex}`);
+				now.addClass("inserted");
+				// now.removeClass("inserted")
+				now.text("1");
+				backIndex += 1;
+			}
 
-            let queueContainer = $(document.createElement('table'));
-            let tr = $(document.createElement('tr'))
-            queueContainer.append(tr)
-            queueContainer.append();
-            for(let i=queueSize-1;i>=0;i--){
-                const td = $(document.createElement('td'))
-                td.text('　')
-                td.attr("id",`ele${i}`)
-                tr.append(td)
-            }
-            summonBoard.append(queueContainer)
-
-        }
-
-        function clearAll() {
-            $("#board").empty();
-            removeInput();
-
-        }
-
-        function removeInput() {
-            console.log('removeInput function is activated.');
-            boardExist = false;
-            $("#input").empty();
-        }
-
-    </script>
-</body>
-
+			function dequeue() {
+				if (backIndex == 0) {
+					alert("Queue is empty");
+					return;
+				}
+				for (let i = 0; i < backIndex; i++) {
+					if (i == backIndex - 1) {
+						$(`#ele${i}`).removeClass("inserted");
+						$(`#ele${i}`).text("　");
+					} else $(`#ele${i}`).text($(`#ele${i + 1}`).text());
+				}
+				backIndex -= 1;
+				$.get("https://www.google.com");
+			}
+		</script>
+	</body>
 </html>
