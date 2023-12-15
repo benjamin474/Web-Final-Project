@@ -4,18 +4,18 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="Container.css">
-    <script src="Stack.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
     <h1><span>Array(陣列)</span></h1>
     <div class="go_home">
-        <a href="Start.html"><img src='home_rounded.png'></a>
+        <a href="Start.html"><img src='icon/home_rounded.png'></a>
     </div>
     <div class="button_group" style="float: left;">
-        <div id="assign" onclick="assign()" class="button" >Assign</div><br>
-        <div id="top" class="button" >Top</div><br>
-        <div id="push" class="button" >Push</div><br>
+        <div id="assign" onclick="assign()" class="button">Size</div><br>
+        <div id="assignValue" class="button">Input</div><br>
+        <div id="delete" class="button">Delete</div><br>
     </div>
 
     <div class="board" id="board">
@@ -25,11 +25,91 @@
     <div id="input"></div>
 
     <div class="button_group" style="float: right;">
-        <div id="pop" class="button" >Pop</div><br>
-        <div id="clear" class="button" >Clear</div><br>
-        <div id="example" class="button" ><a href='https://www.youtube.com/watch?v=BbeeuzU5Qc8' target="_blank" style="text-decoration: none; color:white;">Example</a></div>
+        <div id="search" class="button">Search</div><br>
+        <div id="clear" class="button">Clear</div><br>
+        <div id="example" class="button">Example</div>
     </div>
-    
+
+    <script>
+        $(document).ready(() => {
+            $("#assign").click(assign)
+            $("#clear").click(clearAll)
+            $("#assignValue").click(push)
+            $("#search").click(search)
+            // $("#example").click(pop)
+
+        })
+
+        function search() {
+
+        }
+        function clearAll() {
+            $('#board').empty()
+            removeInput();
+        }
+
+
+        function removeInput() {
+            console.log('removeInput function is activated.');
+            boardExist = false;
+            $("#input").empty();
+        }
+
+        function assign() { //出現輸入列 然後交給build
+            if (!boardExist) {
+                inputSummon('assign');
+
+                $("#cancelBtn").click(() => {
+                    removeInput()
+                })
+
+                $("#submitBtn").click(() => {
+                    const inp = $("#stackSize").val();
+                    if (inp.length == 0) {
+                        alert("Please input stack size")
+                        return;
+                    }
+                    const value = Number.parseInt(inp);
+                    if (!(value >= 1 && value <= 10)) {
+                        alert("Stack size invalid")
+                        return;
+                    }
+                    buildStack(value)
+                })
+            }
+            else {
+                alert('請先取消或輸入完當前數據!')
+            }
+        }
+
+        function inputSummon(type) {
+            let holder;
+            if (type == 'assign')
+                holder = '請輸入1~10之間的數字'
+            else if (type == 'push')
+                holder = '請輸入任意數字'
+
+            boardExist = true;
+            let input = $(document.createElement("input"));
+            let container = $("#input")
+            let submitButton = $(document.createElement('button'))
+            let cancelButton = $(document.createElement('button'))
+
+            container.attr('background-color', 'white');
+
+            container.addClass("input")
+            input.attr("type", "Number")
+            input.attr("id", "stackSize")
+            input.attr("placeholder", holder)
+
+            submitButton.text("submit")
+            submitButton.attr("id", "submitBtn")
+            cancelButton.text("cancel")
+            cancelButton.attr("id", "cancelBtn")
+
+            container.append([input, submitButton, cancelButton]);
+        }
+    </script>
 </body>
 
 </html>

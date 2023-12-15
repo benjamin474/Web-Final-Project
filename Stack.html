@@ -16,7 +16,7 @@
         <a href="Start.html"><img src='icon/home_rounded.png'></a>
     </div>
     <div class="button_group" style="float: left;">
-        <div id="assign" class="button">Assign</div><br>
+        <div id="assign" class="button">Size</div><br>
         <div id="top" class="button">Top</div><br>
         <div id="push" class="button">Push</div><br>
     </div>
@@ -94,18 +94,23 @@
                 return;
             }
             const topEle = $(`#ele${topIndex}`).children();
+            if (topEle.hasClass('getTop')){
+                topEle.removeClass('getTop')
+                return;
+            }
 
             topEle.removeClass('inserted')
-            topEle.removeClass('white')
-            topEle.addClass("getTop")
-            setTimeout(() => {
+            topEle.addClass('white')
+            topEle.addClass('getTop');
+
+            setTimeout(function () {
                 topEle.removeClass('getTop');
                 topEle.addClass('white')
-            }, 2000);
-
-
-
+            }, 1500)
+            
         }
+
+
 
         function buildStack(val) {
             let summonBoard = $('#board')

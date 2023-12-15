@@ -65,7 +65,7 @@ table {
 }
 
 .getTop{
-    animation: hightlight 1.5s;
+    animation: hightlight 1.2s ease-in-out;
     background-color: white;
 }
 
@@ -89,6 +89,8 @@ table {
 .go_home>a img {
     width: 100px;
     height: 100px;
+    /* opacity: 0; */
+    animation: fadeInText 1s;
 }
 
 .button_group {
@@ -142,7 +144,7 @@ button{
     height:30px;
     background-color: white;
     /* font-size: ; */
-    top: 10px;
+    top: 10px;color: 
     border: 5px groove gray;
     border-radius: 25px;
 }
@@ -190,12 +192,12 @@ button{
 
 /*顯現出來*/
 @keyframes hightlight {
-    0%  {
+    50%  {
         background-color: yellow;
     }
 
-    100% {
-        background-color: white;
+    0%,100% {
+        background-color: lightyellow;
     }
 }
 
@@ -210,15 +212,5 @@ button{
 
     100% {
         background-color: transparent;
-    }
-}
-
-@keyframes topAnimation{
-    0% {
-        background-color: yellow;
-    }
-
-    100% {
-        background-color: white;
     }
 }
