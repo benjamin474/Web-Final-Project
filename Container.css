@@ -59,6 +59,11 @@ table {
     bottom: 0;
 }
 
+.queue-table{
+    table-layout: fixed;
+    width:100%;
+}
+
 .inserted {
     animation: hightlight 1s;
     background-color: white;

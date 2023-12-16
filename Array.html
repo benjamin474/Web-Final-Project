@@ -42,6 +42,7 @@
 
         function search() {
 
+            
         }
         function clearAll() {
             $('#board').empty()
@@ -82,12 +83,7 @@
             }
         }
 
-        function inputSummon(type) {
-            let holder;
-            if (type == 'assign')
-                holder = '請輸入1~10之間的數字'
-            else if (type == 'push')
-                holder = '請輸入任意數字'
+        function inputSummon(holder) {
 
             boardExist = true;
             let input = $(document.createElement("input"));

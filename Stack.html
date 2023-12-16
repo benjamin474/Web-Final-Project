@@ -47,7 +47,7 @@
             // now.text("1");
 
             if (!boardExist) {
-                inputSummon('push');
+                inputSummon('請輸入任意數字');
 
                 $("#cancelBtn").click(() => {
                     removeInput()
@@ -146,7 +146,7 @@
 
         function assign() { //出現輸入列 然後交給build
             if (!boardExist) {
-                inputSummon('assign');
+                inputSummon('請輸入1~10之間的數字');
 
                 $("#cancelBtn").click(() => {
                     removeInput()
@@ -171,13 +171,7 @@
             }
         }
 
-        function inputSummon(type) {
-            let holder;
-            if (type == 'assign')
-                holder = '請輸入1~10之間的數字'
-            else if (type == 'push')
-                holder = '請輸入任意數字'
-
+        function inputSummon(holder) {
             boardExist = true;
             let input = $(document.createElement("input"));
             let container = $("#input")
